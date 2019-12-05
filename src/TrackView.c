@@ -259,14 +259,76 @@ static void renderInterpolation(const struct TrackInfo* info, struct sync_track*
 
 	fidx = idx >= 0 ? idx : -idx - 2;
 	interpolationType = (fidx >= 0) ? track->keys[fidx].type : KEY_STEP;
+	int inOut = 0; // In = 1, Out = 2: InOut = 3;
+
 
 	switch (interpolationType)
 	{
-		case KEY_STEP   : color = Emgui_color32(0, 0, 0,   255);; break;
-		case KEY_LINEAR : color = Emgui_color32(255, 0, 0, 255); break;
-		case KEY_SMOOTH : color = Emgui_color32(0, 255, 0, 255); break;
-		case KEY_RAMP   : color = Emgui_color32(0, 0, 255, 255); break;
-		default: break;
+		case KEY_IN_QUAD:
+		case KEY_IN_CUBIC:
+		case KEY_IN_QUART:
+		case KEY_IN_QUINT:
+		case KEY_IN_SINE:
+		case KEY_IN_CIRC:
+		case KEY_IN_EXPO:
+		case KEY_IN_ELASTIC:
+		case KEY_IN_BACK:
+		case KEY_IN_BOUNCE:
+			inOut = 1;
+			break;
+
+		case KEY_OUT_QUAD:
+		case KEY_OUT_CUBIC:
+		case KEY_OUT_QUART:
+		case KEY_OUT_QUINT:
+		case KEY_OUT_SINE:
+		case KEY_OUT_CIRC:
+		case KEY_OUT_EXPO:
+		case KEY_OUT_ELASTIC:
+		case KEY_OUT_BACK:
+		case KEY_OUT_BOUNCE:
+			inOut = 2;
+			break;
+
+		case KEY_IN_OUT_QUAD:
+		case KEY_IN_OUT_CUBIC:
+		case KEY_IN_OUT_QUART:
+		case KEY_IN_OUT_QUINT:
+		case KEY_IN_OUT_SINE:
+		case KEY_IN_OUT_CIRC:
+		case KEY_IN_OUT_EXPO:
+		case KEY_IN_OUT_ELASTIC:
+		case KEY_IN_OUT_BACK:
+		case KEY_IN_OUT_BOUNCE:
+			inOut = 3;
+			break;
+
+		default:
+			inOut = 0;
+			break;
+	}
+
+	switch (interpolationType)
+	{
+		case KEY_STEP:
+			color = Emgui_color32(0, 0, 0,   255);
+			break;
+		case KEY_LINEAR:
+		case KEY_SMOOTH:
+		case KEY_RAMP:
+			color = Emgui_color32(255, 0, 0, 255);
+			break;
+		default         : 
+			if (inOut == 1) {
+				color = Emgui_color32(0, 255, 0, 255);
+			} else if (inOut == 2) {
+				color = Emgui_color32(0, 255, 255, 255);
+			} else if (inOut == 3) {
+				color = Emgui_color32(255, 255, 255, 255);
+			} else {
+				color = Emgui_color32(0, 0, 0, 255);
+			}
+			break;
 	}
 
 	if (info->viewInfo)

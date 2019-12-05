@@ -395,6 +395,36 @@ static int drawCurrentValue(int posX, int sizeY)
 				case KEY_LINEAR: str = "linear"; break;
 				case KEY_SMOOTH: str = "smooth"; break;
 				case KEY_RAMP:   str = "ramp"; break;
+				case KEY_IN_QUAD: str = "quad In"; break;
+				case KEY_OUT_QUAD: str = "quad Out"; break;
+				case KEY_IN_OUT_QUAD: str = "quad InOut"; break;
+				case KEY_IN_CUBIC: str = "cubic In"; break;
+				case KEY_OUT_CUBIC: str = "cubic Out"; break;
+				case KEY_IN_OUT_CUBIC: str = "cubic InOut"; break;
+				case KEY_IN_QUART: str = "quart In"; break;
+				case KEY_OUT_QUART: str = "quart Out"; break;
+				case KEY_IN_OUT_QUART: str = "quart InOut"; break;
+				case KEY_IN_QUINT: str = "quint In"; break;
+				case KEY_OUT_QUINT: str = "quint Out"; break;
+				case KEY_IN_OUT_QUINT: str = "quint InOut"; break;
+				case KEY_IN_SINE: str = "sine In"; break;
+				case KEY_OUT_SINE: str = "sine Out"; break;
+				case KEY_IN_OUT_SINE: str = "sine InOut"; break;
+				case KEY_IN_CIRC: str = "circ In"; break;
+				case KEY_OUT_CIRC: str = "circ Out"; break;
+				case KEY_IN_OUT_CIRC: str = "circ InOut"; break;
+				case KEY_IN_EXPO: str = "expo In"; break;
+				case KEY_OUT_EXPO: str = "expo Out"; break;
+				case KEY_IN_OUT_EXPO: str = "expo InOut"; break;
+				case KEY_IN_ELASTIC: str = "elastic In"; break;
+				case KEY_OUT_ELASTIC: str = "elastic Out"; break;
+				case KEY_IN_OUT_ELASTIC: str = "elastic InOut"; break;
+				case KEY_IN_BACK: str = "back In"; break;
+				case KEY_OUT_BACK: str = "back Out"; break;
+				case KEY_IN_OUT_BACK: str = "back InOut"; break;
+				case KEY_IN_BOUNCE: str = "bounce In"; break;
+				case KEY_OUT_BOUNCE: str = "bounce Out"; break;
+				case KEY_IN_OUT_BOUNCE: str = "bounce InOut"; break;
 				default: break;
 			}
 		}
